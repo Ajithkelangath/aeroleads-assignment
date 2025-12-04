@@ -1,0 +1,23 @@
+<h1>AI Blog</h1>
+
+<div style="border: 1px solid #ccc; padding: 10px;">
+  <h3>Generate Articles</h3>
+  <%= form_with url: posts_path, local: true do |f| %>
+    <%= f.label :titles, "Enter titles (one per line)" %>
+    <%= f.text_area :titles, rows: 5 %>
+    <%= f.submit "Generate" %>
+  <% end %>
+</div>
+
+<hr>
+
+<h2>Articles</h2>
+<% @posts.each do |post| %>
+  <div style="margin-bottom: 20px; border-bottom: 1px solid #eee;">
+    <h3><%= post.title %></h3>
+    <div style="white-space: pre-wrap;"><%= post.content %></div>
+    <small><%= post.created_at %></small>
+  </div>
+<% end %>
+
+<p><%= link_to "Back to Autodialer", calls_path %></p>
